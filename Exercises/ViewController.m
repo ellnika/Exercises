@@ -11,6 +11,7 @@
 #import "GameplayKit/GKRandomDistribution.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet UITextField *userNumberInput;
 
 @property (nonatomic, strong) NSArray *array;
 @property (nonatomic, strong) NSNumber *number;
@@ -45,8 +46,17 @@
     //the program displays random numbe
     NSInteger generatedNumber = [randomNumber nextInt];
     self.displayedText.text=[NSString stringWithFormat:@"%ld", (long)generatedNumber];
+// user label
+    
+    NSInteger userNumber = [self.userNumberInput.text integerValue];
+    if (userNumber !=generatedNumber) {
+        NSLog(@"Number is wrong");
+        
 
+    }
+    
 }
+
 
 - (void)setupInput {
     
