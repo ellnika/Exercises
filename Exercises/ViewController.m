@@ -7,17 +7,21 @@
 //
 
 #import "ViewController.h"
-
+#import "GameplayKit/GameplayKit.h"
+#import "GameplayKit/GKRandomDistribution.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) NSArray *array;
+@property (nonatomic, strong) NSNumber *number;
+//self.array = @[@1, @3, @4];
+@property (strong, nonatomic) IBOutlet UITextField *displayedText;
 
 @end
 
 @implementation ViewController
 - (IBAction)buttonTapped:(id)sender {
-    [self exerciseOne];
+    [self exerciseEight];
     //    [self exerciseTwo];
 }
 
@@ -32,11 +36,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)exerciseOne {
-    int N = 3;
-    self.array = @[@1, @3, @4];
-    
-    
+- (void)exerciseEight {
+    GKARC4RandomSource *computerRandomNumber = [[GKARC4RandomSource alloc] init];
+
+    //the program chooses a number between 1 and 10
+    //- (NSUInteger)nextIntWithUpperBound:(NSUInteger)upperBound
+    GKRandomDistribution *randomNumber = [[GKRandomDistribution alloc] initWithRandomSource:computerRandomNumber lowestValue:1 highestValue:10];
+    //the program displays random numbe
+    NSInteger generatedNumber = [randomNumber nextInt];
+    self.displayedText.text=[NSString stringWithFormat:@"%ld", (long)generatedNumber];
+
 }
 
 - (void)setupInput {
